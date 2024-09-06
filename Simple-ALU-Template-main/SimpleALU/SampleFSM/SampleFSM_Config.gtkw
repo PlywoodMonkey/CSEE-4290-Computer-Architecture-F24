@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Tue Sep  3 15:03:59 2024
+[*]
+[dumpfile] "/Users/vinny/Desktop/Workspace/Simple-ALU-Template-main/SimpleALU/SampleFSM/dump.lx2"
+[dumpfile_mtime] "Tue Sep  3 14:46:57 2024"
+[dumpfile_size] 330
+[savefile] "/Users/vinny/Desktop/Workspace/Simple-ALU-Template-main/SimpleALU/SampleFSM/SampleFSM_Config.gtkw"
+[timestart] 0
+[size] 1728 1080
+[pos] -1 -2
+*-4.402946 3 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] SampleFSM_Test.
+[sst_width] 193
+[signals_width] 196
+[sst_expanded] 1
+[sst_vpaned_height] 335
+@28
+[color] 1
+SampleFSM_Test.CompToTest.B[0]
+@200
+-
+@28
+[color] 2
+SampleFSM_Test.CompToTest.Clk[0]
+@200
+-
+@28
+[color] 3
+SampleFSM_Test.CompToTest.Rst[0]
+@200
+-
+@c00028
+[color] 4
+SampleFSM_Test.CompToTest.StateNext[1:0]
+@28
+(0)SampleFSM_Test.CompToTest.StateNext[1:0]
+(1)SampleFSM_Test.CompToTest.StateNext[1:0]
+@1401200
+-group_end
+@200
+-
+@28
+SampleFSM_Test.CompToTest.State[1:0]
+@200
+-
+@28
+[color] 1
+SampleFSM_Test.CompToTest.X[0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,45 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Tue Aug 27 16:19:01 2024
+[*]
+[dumpfile] "/Users/vinny/Desktop/Workspace/Lab_1/Educore-SingleCycle/dump.lx2"
+[dumpfile_mtime] "Tue Aug 27 16:18:42 2024"
+[dumpfile_size] 4815
+[savefile] "/Users/vinny/Desktop/Workspace/Lab_1/Educore-SingleCycle/debug.gtkw"
+[timestart] 0
+[size] 1284 890
+[pos] 46 56
+*-7.891428 53 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_Educore.
+[treeopen] test_Educore.educore.
+[sst_width] 193
+[signals_width] 398
+[sst_expanded] 1
+[sst_vpaned_height] 269
+@28
+test_Educore.main_clk[0]
+test_Educore.mem_clk[0]
+@22
+test_Educore.core_clk[0]
+@28
+test_Educore.nreset[0]
+test_Educore.educore.nreset_sync[0]
+test_Educore.educore.instruction_memory_en[0]
+@22
+test_Educore.educore.instruction_memory_a[63:0]
+test_Educore.educore.aligned_pc[63:0]
+test_Educore.educore.instruction_memory_v[31:0]
+test_Educore.educore.instruction[31:0]
+test_Educore.educore.register_file.rX00[63:0]
+test_Educore.educore.register_file.rX01[63:0]
+test_Educore.educore.register_file.rX02[63:0]
+test_Educore.educore.register_file.rX05[63:0]
+test_Educore.educore.register_file.rX06[63:0]
+@28
+test_Educore.data_memory_write[0]
+@22
+test_Educore.data_memory_out_v[63:0]
+test_Educore.data_memory_a[63:0]
+test_Educore.error_indicator[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
