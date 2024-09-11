@@ -58,3 +58,15 @@ LXT2 info: dumpfile dump.lx2 opened for output.
 ALU_testbench.v:216: $finish called at 1190 (1ns)
 LXT2 info: dumpfile dump.lx2 opened for output.
 ALU_testbench.v:226: $finish called at 1230 (1ns)
+LXT2 info: dumpfile dump.lx2 opened for output.
+ALU_testbench.v:226: $finish called at 1230 (1ns)
+LXT2 info: dumpfile dump.lx2 opened for output.
+ALU_testbench.v:224: $finish called at 1150 (1ns)
+LXT2 info: dumpfile dump.lx2 opened for output.
+ALU_testbench.v:225: $finish called at 1230 (1ns)
+LXT2 info: dumpfile dump.lx2 opened for output.
+ALU_testbench.v:225: $finish called at 1230 (1ns)
+LXT2 info: dumpfile dump.lx2 opened for output.
+ALU_testbench.v:225: $finish called at 1230 (1ns)
+LXT2 info: dumpfile dump.lx2 opened for output.
+ALU_testbench.v:225: $finish called at 1230 (1ns)

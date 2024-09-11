@@ -14,6 +14,7 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
    reg [15:0] Data_A;
    reg [15:0] Data_B;
    reg [16:0] OverflowCheck;
+   reg [2:0]  test;
    
 
    
@@ -32,6 +33,8 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
       if (RST == 1) begin
 	 Data_A = 0;
 	 Data_B = 0;
+	 test = 0;
+	 
 	 
          // Reset everything to Zero
          Results = 0;
@@ -40,7 +43,16 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 	 CF = 0;
 	 OverflowCheck = 0;
 	 
-      end else begin
+      end else begin // if (RST == 1)
+
+	 if (test == 0) begin
+	    #100;
+	    
+	    test = 1;
+	    Data_A = X;
+	    Data_B = Y;
+	  
+	 end  
 	 
 	 // put this if statement around all of the loop so as to enable and disable the loop
 	 if (Enable == 1) begin
@@ -50,19 +62,22 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
               S_000: begin
 		 // NOP Operation
 		 // Set Data A and Data B to X and Y, respectively
-		 Data_A <= X;
-		 Data_B <= Y;
+		 //Data_A <= X;
+		 //Data_B <= Y;
 		 // Simply Does Nothing
+
+		 
               end // S_000
               
               S_001: begin
 		 // A + B
-		 Data_A = X;
-		 Data_B = Y;
+		 //Data_A = X;
+		 //Data_B = Y;
 		 
 		 Results = Data_A + Data_B;
 		 		 
 		 OverflowCheck = Data_A + Data_B;
+		 
 		 // checks for overflow
 		 if (OverflowCheck[16] == 1) begin
 		    CF <= 1;
@@ -74,27 +89,31 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 
               S_010: begin
 		 // A & B
-		 Data_A = X;
-		 Data_B = Y;
+		 //Data_A = X;
+		 //Data_B = Y;
 		 
 		 Results = Data_A & Data_B;
+		 CF = 0;
+		 
 		 
               end // S_010
 	      
               S_011: begin
 		 // A | B
-		 Data_A = X;
-		 Data_B = Y;
+		 //Data_A = X;
+		 //Data_B = Y;
 		 
 		 Results = Data_A | Data_B;
+		 CF = 0;
+		 
 		 
               end // S_011
 
               S_100: begin
 		 // A < B
 		 // Results <= Data_A < Data_B;
-		 Data_A = X;
-		 Data_B = Y;
+		 //Data_A = X;
+		 //Data_B = Y;
 		 
 		 if (Data_A < Data_B) begin
 		    CF = 1;
@@ -108,11 +127,10 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 
               S_101: begin
 		 // A + B (write results to A)
-		 Data_B = Y;
+		 //Data_B = Y;
 		 Results = Data_A + Data_B;
+		 OverflowCheck = Data_A + Data_B;
 		 Data_A = Results;
-		 
-		 OverflowCheck = Results;
 		 
 		 // check for overflow
 		 if (OverflowCheck[16] == 1) begin
@@ -125,21 +143,26 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 
               S_110: begin 
 		 // A & B (write results to A)
-		 Data_A = X;
-		 Data_B = Y;
+		 //Data_A = X;
+		 //Data_B = Y;
 		 
 		 Data_A = Data_A & Data_B;
 		 Results = Data_A;
+		 
+		 CF = 0;
 		 		 
               end // S_110
 
               S_111: begin
 		 // A | B (write results to A)
-		 Data_A = X;
-		 Data_B = Y;
+		 //Data_A = X;
+		 //Data_B = Y;
 		 
 		 Data_A = Data_A | Data_B;
 		 Results = Data_A;
+
+		 CF = 0;
+		 
 		 
               end // S_111
 

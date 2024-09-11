@@ -42,7 +42,6 @@ module ALU_testbench();
       
       @(posedge CLK_s)
         RST_s <= 0;
-      
       #100;
       
       // Enable is off, Data is present, try to Add
