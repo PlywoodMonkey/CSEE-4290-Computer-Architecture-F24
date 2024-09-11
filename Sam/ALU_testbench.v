@@ -2,12 +2,12 @@
 // for project 1. Refer to the project one document for instructions 
 // and guidance.
 
-`timescale 1ms/1ms
+`timescale 1ns/1ns
 
 module ALU_testbench();
 
     reg CLK_s, RST_s, Enable_s;
-    reg [15:0] Data_A_s; // these had to be regs for some reason
+    reg [15:0] Data_A_s;
     reg [15:0] Data_B_s; 
     reg [3:0] Opcode_s;
 
@@ -15,7 +15,9 @@ module ALU_testbench();
     reg CF;                   
     output wire [15:0] Results;      
 
-    ALU ALU_Test_Functions(CLK_s, RST_s, Enable_s, Data_A_s, Data_B_s, Opcode_s);
+    reg [1:0] test_case = 1;
+
+    ALU ALU_Test_Functions(CLK_s, RST_s, Enable_s);
 
     // Basic Clock
     always begin
@@ -26,18 +28,38 @@ module ALU_testbench();
     end
 
     initial begin
-        $dumpvars(0,ALU_testbench); // Include name of tb file
+        $dumpvars(0, ALU_testbench); // Include name of tb file
 
-        RST_s <= 1;
-        #10;
-        @(posedge CLK_s)
-        RST_s <= 0;
-        #20;
-        @(posedge CLK_s)
-        Data_A_s = 6464;
-        Data_B_s = 4646;
-        Opcode_s = 001;
-        #20;
+        case (test_case)
+            
+            1: begin // Reset The System
+                #20
+                @(posedge CLK_s)
+                RST_s <= 1;
+                Enable_s <= 1;
+                Data_A_s <= 6464;
+                Data_B_s <= 4646;
+                Opcode_s <= 001;
+                #20;
+
+                @(posedge CLK_s)
+                RST_s <= 0;
+                #20;
+
+                @(posedge CLK_s)
+                Enable_s <= 0;
+                #750;
+
+            end // End Test Case 1
+
+            2: begin
+                
+            end
+
+        endcase // End Test Case Selection
+
+    @(posedge CLK_s)
+        $finish;
 
     end // Initial Begin
 
