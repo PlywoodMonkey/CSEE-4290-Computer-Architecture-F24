@@ -1,6 +1,6 @@
 
 
-
+all: ALU run gtkwave
 
 ALU: ALU.v ALU_testbench.v
 		iverilog -o ALU_testbench.vvp ALU.v ALU_testbench.v 
