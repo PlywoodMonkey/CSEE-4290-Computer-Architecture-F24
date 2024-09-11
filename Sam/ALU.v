@@ -25,67 +25,74 @@ module ALU (CLK, RST, Enable);
     always @(State) begin
 
         // put this if statement around all of the loop so as to enable and disable the loop
-        //if (Enable = 1) {} 
+        if (Enable == 1) begin
 
-      case (State)
+        case (State)
 
-	    S_000: begin
-            // NOP
-            //StateNext <= S_001;
-            CF = 0;
-            #10; // Simply Does Nothing
-	    end
-	    
-        S_001: begin
-            // A + B
-            Results = Data_A + Data_B;
-            //StateNext <= S_000;
-            CF = 1;
-            #10;
-	        
-	    end
+            S_000: begin
+                // NOP Operation
+                StateNext <= S_000;
+                #10; 
+                // Simply Does Nothing
+            end // S_000
+            
+            S_001: begin
+                // A + B
+                Results = Data_A + Data_B;
+                StateNext <= S_000;
+                #10;
+                // How to notice overflow? 
+            end // S_001
 
-	    S_010: begin
-            // A & B
-            Results = Data_A & Data_B;
-	        StateNext <= S_011;
-	    end
+            S_010: begin
+                // A & B
+                Results = Data_A & Data_B;
+                StateNext <= S_000;
+                // Should just be this
+            end // S_010
 
-	    S_011: begin
-            // A | B
-            Results = Data_A | Data_B;
-	        StateNext <= S_100;
-	    end
+            S_011: begin
+                // A | B
+                Results = Data_A | Data_B;
+                StateNext <= S_000;
+                // Should just be this
+            end // S_011
 
-	    S_100: begin
-            // A < B
-            // Results <= Data_A < Data_B;
-	        StateNext <= S_101;
-	    end
+            S_100: begin
+                // A < B
+                // Results <= Data_A < Data_B;
+                StateNext <= S_000;
+            end // S_100
 
-	    S_101: begin
-            // A + B (write results to A)
-            Data_A <= Data_A + Data_B;
-	        StateNext <= S_110;
-	    end
+            S_101: begin
+                // A + B (write results to A)
+                Data_A <= Data_A + Data_B;
+                StateNext <= S_000;
+                // How to set overflow flag?
+            end // S_101
 
-	    S_110: begin
-            // A & B (write results to A)
-            Data_A <= Data_A & Data_B;
-	        StateNext <= S_111;
-	    end
+            S_110: begin
+                // A & B (write results to A)
+                Data_A <= Data_A & Data_B;
+                StateNext <= S_000;
+                // Should just be this
+            end // S_110
 
-	    S_111: begin
-            // A | B (write results to A)
-            Data_A <= Data_A | Data_B;
-	        StateNext <= S_000;
-	   end
+            S_111: begin
+                // A | B (write results to A)
+                Data_A <= Data_A | Data_B;
+                StateNext <= S_000;
+                // Should just be this
+            end // S_111
 
-      endcase // case (State)
+        endcase // case (State)
+
+      end // if loop
+
    end // always @ (State)
 */
 
-    //StateReg
+    // At Reset = 1, all internal registers should be in a known state or set to 0. 
     always @(posedge CLK) begin
         if (RST == 1) begin
             Data_A <= 0;
