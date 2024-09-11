@@ -1,0 +1,21 @@
+LXT2 info: dumpfile dump.lx2 opened for output.
+Reading memory file now.
+At time =                    5, fifo in = 1, fifo out = 0 n
+
+At time =                   15, fifo in = 1, fifo out = 0 n
+
+At time =                   25, fifo in = 1, fifo out = 0 n
+
+At time =                   35, fifo in = 1, fifo out = 0 n
+
+At time =                   45, fifo in = 1, fifo out = 1 n
+
+At time =                   55, fifo in = 1, fifo out = 1 n
+
+At time =                   65, fifo in = 1, fifo out = 1 n
+
+At time =                   75, fifo in = 1, fifo out = 1 n
+
+At time =                   85, fifo in = 1, fifo out = 1 n
+
+FIFO_Test.v:17: $finish called at 90 (1s)
