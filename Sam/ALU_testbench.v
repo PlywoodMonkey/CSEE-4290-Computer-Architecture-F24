@@ -15,7 +15,7 @@ module ALU_testbench();
     reg CF;                   
     output wire [15:0] Results;      
 
-    reg [1:0] test_case = 1;
+    reg [2:0] test_case = 1;
 
     ALU ALU_Test_Functions(CLK_s, RST_s, Enable_s);
 
@@ -33,27 +33,71 @@ module ALU_testbench();
         case (test_case)
             
             1: begin // Reset The System
+
                 #20
                 @(posedge CLK_s)
                 RST_s <= 1;
-                Enable_s <= 1;
+                #20;
+
+                @(posedge CLK_s)
+                RST_s <= 0;
+                #200;
+
+            end // End Test Case 1
+
+            2: begin // Enable is off, Data is present, try to Add
+
+                #20
+                @(posedge CLK_s)
+                Enable_s <= 0;
+                Data_A_s <= 6464;
+                Data_B_s <= 4646;
+                Opcode_s <= 001;
+                #200;
+
+                // Nothing should happen
+
+            end
+
+            3: begin // Add Data_A and Data_B
+
+                #20
+                @(posedge CLK_s)
+                Enable_s <= 0;
                 Data_A_s <= 6464;
                 Data_B_s <= 4646;
                 Opcode_s <= 001;
                 #20;
 
                 @(posedge CLK_s)
-                RST_s <= 0;
+                Enable_s <= 1;
+                #200;
+
+                // Now things should happen
+
+            end
+
+            4: begin // Add Data_A and Data_B, then try to & them, but have the enable off.
+
+                #20
+                @(posedge CLK_s)
+                Enable_s <= 0;
+                Data_A_s <= 6464;
+                Data_B_s <= 4646;
+                Opcode_s <= 001;
+                #20;
+
+                @(posedge CLK_s)
+                Enable_s <= 1;
                 #20;
 
                 @(posedge CLK_s)
                 Enable_s <= 0;
-                #750;
+                Opcode_s <= 010;
+                #200;
 
-            end // End Test Case 1
+                // Nothing should happen after the add
 
-            2: begin
-                
             end
 
         endcase // End Test Case Selection
