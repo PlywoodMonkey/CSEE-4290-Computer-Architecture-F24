@@ -13,8 +13,6 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
    
    reg [15:0] Data_A;
    reg [15:0] Data_B;
-   reg [15:0] prevX;
-   reg [15:0] prevY;
    reg [16:0] OverflowCheck;
    reg [2:0]  test;
    
@@ -49,17 +47,13 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 	 
       end else begin // if (RST == 1)
 
-	if (prevX != X) begin
+	if (test == 0) begin
 	    
 	    #100;
-	    //test = 1;
+	    test = 1;
 	    Data_A = X;
-		
-	end else if (prevY != Y) begin
-	    #100
-	    Data_B = Y;
-	  
-	 end  
+	    Data_B = Y;	
+	end 
 	 
 	 // put this if statement around all of the loop so as to enable and disable the loop
 	 if (Enable == 1) begin
