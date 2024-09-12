@@ -13,6 +13,8 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
    
    reg [15:0] Data_A;
    reg [15:0] Data_B;
+   reg [15:0] prevX;
+   reg [15:0] prevY;
    reg [16:0] OverflowCheck;
    reg [2:0]  test;
    
@@ -33,6 +35,8 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
       if (RST == 1) begin
 	 Data_A = 0;
 	 Data_B = 0;
+         prevX = 0;
+	 prevY = 0;
 	 test = 0;
 	 
 	 
@@ -45,11 +49,14 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 	 
       end else begin // if (RST == 1)
 
-	 if (test == 0) begin
-	    #100;
+	if (prevX != X) begin
 	    
+	    #100;
 	    test = 1;
 	    Data_A = X;
+		
+	end else (prevY != Y) begin
+	    
 	    Data_B = Y;
 	  
 	 end  
