@@ -75,8 +75,8 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 
               S_001: begin
 			  	 // A + B
-				 //Data_A = X;
-				 //Data_B = Y;
+		 Data_A = X;
+		 Data_B = Y;
 	
                  Results = CLA_Sum;
 				 
@@ -86,8 +86,8 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 
               S_010: begin
 				 // A & B
-				 //Data_A = X;
-				 //Data_B = Y;
+		 Data_A = X;
+	         Data_B = Y;
                  Results = Data_A & Data_B;
 				 
                  CF = 0;
@@ -96,8 +96,8 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 
               S_011: begin
 				 // A | B
-				 //Data_A = X;
-				 //Data_B = Y;
+		 Data_A = X;
+		 Data_B = Y;
                  Results = Data_A | Data_B;
 				 
                  CF = 0;

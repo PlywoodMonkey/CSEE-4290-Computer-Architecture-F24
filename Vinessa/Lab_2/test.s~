@@ -1,0 +1,13 @@
+
+
+	.global _start
+
+	.text
+
+_start:
+	MOVZ	X1, #0xff, LSL #48
+	ADD	X3, X1, #0xdd, LSL #12
+	
+
+YIELD
+	
