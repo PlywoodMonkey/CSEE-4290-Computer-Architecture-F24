@@ -52,11 +52,11 @@ module ALU (CLK, RST, Enable, X, Y, Opcode, CF, Results);
 	if (prevX != X) begin
 	    
 	    #100;
-	    test = 1;
+	    //test = 1;
 	    Data_A = X;
 		
-	end else (prevY != Y) begin
-	    
+	end else if (prevY != Y) begin
+	    #100
 	    Data_B = Y;
 	  
 	 end  
