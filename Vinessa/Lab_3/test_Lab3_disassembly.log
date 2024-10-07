@@ -1,0 +1,29 @@
+
+test_Lab3.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	d2801fe0 	mov	x0, #0xff                  	// #255
+   4:	14000004 	b	14 <_TEST>
+   8:	d29fffe0 	mov	x0, #0xffff                	// #65535
+   c:	92400001 	and	x1, x0, #0x1
+  10:	927f0001 	and	x1, x0, #0x2
+
+0000000000000014 <_TEST>:
+  14:	921e2c01 	and	x1, x0, #0x3ffc00003ffc
+  18:	d37ff822 	lsl	x2, x1, #1
+  1c:	92801f78 	mov	x24, #0xffffffffffffff04    	// #-252
+  20:	9343ff19 	asr	x25, x24, #3
+  24:	8b000024 	add	x4, x1, x0
+  28:	8b000837 	add	x23, x1, x0, lsl #2
+  2c:	d2800005 	mov	x5, #0x0                   	// #0
+  30:	f10004a6 	subs	x6, x5, #0x1
+  34:	d280000a 	mov	x10, #0x0                   	// #0
+  38:	f8000140 	stur	x0, [x10]
+  3c:	f840014b 	ldur	x11, [x10]
+  40:	d3420c34 	ubfx	x20, x1, #2, #2
+  44:	d3430835 	lsl	x21, x1, #61
+  48:	93c10816 	extr	x22, x0, x1, #2
+  4c:	d503203f 	yield

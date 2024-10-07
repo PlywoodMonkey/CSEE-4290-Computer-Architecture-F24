@@ -6,6 +6,7 @@
 
 module ALU_testbench();
 
+   // init regs for inputs
    reg CLK_s, RST_s, Enable_s;
    reg [15:0] Data_A_s;
    reg [15:0] Data_B_s; 

@@ -1,0 +1,21 @@
+
+test_ALIAS.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	d2800a00 	mov	x0, #0x50                  	// #80
+   4:	d2802781 	mov	x1, #0x13c                 	// #316
+   8:	d2800ca5 	mov	x5, #0x65                  	// #101
+   c:	d2800cc6 	mov	x6, #0x66                  	// #102
+  10:	38000005 	sturb	w5, [x0]
+  14:	38001006 	sturb	w6, [x0, #1]
+  18:	3800201f 	sturb	wzr, [x0, #2]
+
+000000000000001c <_strcpyloop>:
+  1c:	38401402 	ldrb	w2, [x0], #1
+  20:	38001422 	strb	w2, [x1], #1
+  24:	f100005f 	cmp	x2, #0x0
+  28:	54ffffa1 	b.ne	1c <_strcpyloop>  // b.any
+  2c:	d503203f 	yield
